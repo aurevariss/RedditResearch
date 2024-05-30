@@ -1,0 +1,5 @@
+[local]
+client_id=
+client_secret=
+username=
+list_path = config/urls.txt

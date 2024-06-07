@@ -11,11 +11,10 @@ def main():
 
     # Get all info: links, post text, post comments
     # text_obj.get_links(reddit)
-    # text_obj.get_text(reddit)
+    text_obj.get_text(reddit)
 
     # Cleaning the text
-    # text_obj.clean_text()
-    text_obj.lemmatization()
+    text_obj.clean_text()
 
 if __name__ == "__main__":
     main()

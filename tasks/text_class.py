@@ -23,7 +23,7 @@ class LinguisticText:
             self.collecting_main_post(i, collected_data, reddit)
 
     def collecting_main_post(self, url, collected_data, reddit):
-        """"Собирает данные поста: заголовок и текст"""
+        """Собирает данные поста: заголовок и текст"""
         post = reddit.submission(url="https://www.reddit.com" + url)
         collected_data.write(post.title)
         collected_data.write("\n\n")
@@ -39,8 +39,9 @@ class LinguisticText:
             collected_data.write("\n\n")
 
     def clean_text(self):
+        """Clean text from punctuation etc etc.
+        Also using other smaller functions"""
         import re
-        """Clean text from punctuation etc etc"""
         emoj = re.compile("["
                           u"\U0001F600-\U0001F64F"  # emoticons
                           u"\U0001F300-\U0001F5FF"  # symbols & pictographs
@@ -81,6 +82,7 @@ class LinguisticText:
         i.write(text_)
 
     def checking_answers(self, answer, note, txt_):
+        """Check answers for clean text"""
         if answer.lower() == "yes":
             if note == "1":
                 return self.lowercase_text(txt_)
@@ -105,6 +107,8 @@ class LinguisticText:
                 else:
                     return self.punctuation_excluding_apos(txt_)
 
+    """Here's a block of small funcs that 
+    are used in cleaning text process"""
     def lowercase_text(self, txt_):
         return txt_.lower()
 
@@ -115,7 +119,7 @@ class LinguisticText:
         return txt_
 
     def punctuation_excluding_apos(self, txt_):
-        spec_chars = '«»\t—"#$%&()*+,-/:;<=>@[\]^_{|}~'  # !?. ...
+        spec_chars = '«»\t—"#$%&()*+,-/:;<=>@[\]^_{|}~'  #
         txt_ = "".join([ch for ch in txt_ if ch not in spec_chars])
         return txt_
 
@@ -127,18 +131,22 @@ class LinguisticText:
         txt_ = re.sub("r/\w+", "", txt_)
         return txt_
 
-    def stop_words(self):
-        from nltk.corpus import stopwords
-        stopwords = stopwords.words("english")
+    # def stop_words(self, token_list):
+    #     """list of stop words + removing them"""
+    #     from nltk.corpus import stopwords
+    #     stopwords = stopwords.words("english")
+    #     return [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
 
-    def lemmatization(self, allowed_postags=["NOUN", "ADJ", "VERB", "ADV"]):
-        import spacy
-        nlp = spacy.load('en_core_web_sm')
-        text_out = []
-        for text in self.prep_text:
-            doc = nlp(text)
-            new_text = []
-            for token.pos_ in allowed_postags:
-                new_text.append(token.lemma_)
-            final = " ".join(new_text)
-            text_out.append(final)
+    # def lemmatization(self, allowed_postags=["NOUN", "ADJ", "VERB", "ADV"]):
+    #     """lemmatizing text"""
+    #     import spacy
+    #     nlp = spacy.load('en_core_web_md')
+    #     text_out = []
+    #     for text in self.prep_text:
+    #         doc = nlp(text)
+    #         new_text = []
+    #         for token.pos_ in allowed_postags:
+    #             new_text.append(token.lemma_)
+    #         final = " ".join(new_text)
+    #         text_out.append(final)
+    #     return token_list

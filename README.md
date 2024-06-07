@@ -13,23 +13,9 @@
   - lowering the case (optional)
 
 
-## What's under development?
-- Word frequency analysis
-- (More be added)
-
-## How to use:
-In command line / shell:
-- ```git clone !!!!!!!!!!!!!!!!!!!!!!!```
-- ```cd !!!!!!!!!!!!!!!!!!!!!!!```
-- ```pip3 install -r requirements.txt```
-- ```cp config/config.cfg.sample config/config.cfg```
-
-Populate values in ```config/config.cfg```:
-- ```client_id``` = ID from [here](https://www.reddit.com/prefs/apps)
-- ```client_secret``` = Secret from [here](https://www.reddit.com/prefs/apps)
-- ```username``` = your Reddit username
-
-> For more info about API and ID and secret watch [this video](https://youtu.be/1KJ_I5h8FRo?si=vZv1080kSBa74dMw&t=135)
-
-In files:
-- Add urls line by line in ```urls.txt```
+## Future plans:
+- More comfortably config setting
+- Word frequency analisys
+- Binome analysis
+- Similarity analysis
+- Topic modeling
